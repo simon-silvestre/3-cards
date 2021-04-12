@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div class="overlay">
+      <p>Card</p>
+    </div>
     <div class="cardContainer">
       <Card title="SEDANS" paragraph="Choose a sedan for its affordability and excellent fuel economy. Ideal for cruising in the city or on your next road trip." color="hsl(31, 77%, 52%)"/>
       <Card title="SUVS" paragraph="Take an SUV for its spacious interior, power, and versatility. Perfect for your next family vacation and off-road adventures." color="hsl(184, 100%, 22%)" />
@@ -16,6 +19,9 @@ export default {
   name: 'App',
   components: {
     Card
+  },
+  mounted() {
+    gsap.to('.overlay', {x: -100 + 'vw', duration: 2, ease: "Expo.easeInOut"})
   }
 }
 </script>
@@ -46,6 +52,23 @@ export default {
     height: 500px;
     border-radius: 10px;
     overflow: hidden;
+  }
+  .overlay {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 99;
+    background-color: hsl(184, 100%, 22%);
+
+    p {
+      font-size: 100px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
   }
 
    @media screen and (max-width: 900px) {
